@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.Service.EmployeeService;
 import com.Service.EmployeeServiceImpl;
 import com.model.Employee;
 
@@ -19,7 +19,7 @@ import com.model.Employee;
 public class EmployeeController {
 
 	@Autowired
-	EmployeeServiceImpl employeeService;
+	EmployeeService employeeService;
 
 	@GetMapping("/findAll")
 	public List<Employee> findAll() {

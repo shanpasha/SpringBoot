@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.EmployeeRepository.EmployeeRepository;
 import com.model.Employee;
+
+import lombok.extern.slf4j.Slf4j;
 @Service
+@Slf4j
 public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired
 	EmployeeRepository repo;
@@ -20,6 +23,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void saveOrUpdate(Employee employee) {
+		log.info("befeore method",employee);
 		repo.save(employee);
 		
 	}

@@ -2,9 +2,11 @@ package com.RestController;
 
 import java.util.List;
 
+import org.aspectj.lang.annotation.DeclareWarning;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Service.EmployeeService;
 import com.Service.EmployeeServiceImpl;
 import com.model.Employee;
 
@@ -19,7 +22,7 @@ import com.model.Employee;
 public class EmployeeResposenseEntityController {
 	
 	@Autowired
-	EmployeeServiceImpl employeeService;
+	EmployeeService employeeService;
 	
 	
 	@GetMapping("/findAllEmp")
@@ -64,11 +67,11 @@ public class EmployeeResposenseEntityController {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND).ok("record Not found in this ID "+id);
 			}
 		}
-	@GetMapping("/EmpdeleteById/{id}")
+	@DeleteMapping("/EmpdeleteById/{id}")
 	public ResponseEntity<?> deleteById(@PathVariable Integer id) {
 try {
 			employeeService.deleteByID(id);
-			return new ResponseEntity<>(HttpStatus.OK).ok(  id+" Record deleted sucessfully ");
+			return (ResponseEntity<?>) new ResponseEntity<>(HttpStatus.OK).getBody();
 			}catch (Exception e) {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND).ok("record Not found in this ID "+id);
 			}
@@ -76,5 +79,4 @@ try {
 		
 	}
 	
-
 
