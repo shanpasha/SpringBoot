@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Employee</title>
+</head>
+<body>
+<form action="./updateEmp" method="post" th:object=${employee}>
+
+<label>ID</label><br>
+<input type="text" name="id" th:field="${employee.id}" readonly="readonly"><br>
+
+<label>Name</label><br>
+<input type="text" name="name"  th:field="${employee.name}"><br>
+
+<label>Salary</label><br>
+<input type="text" name="salary" th:field="${employee.salary}"><br>
+
+
+<label>Email</label><br>
+<input type="text" name="email"  th:field="${employee.email}"><br>
+
+<input type="submit" value="update">
+</form>
+</body>
+</html>

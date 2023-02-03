@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employees List</title>
+</head>
+<body>
+<table border="2px">
+<tr>
+<th>ID</th> <th>Name</th> <th>Salary</th> <th>Email</th> <th>Update</th> <th>Delete</th>
+</tr>
+<tr th:each="em :${empls}">
+
+<td th:text="${em.id}"></td>
+<td th:text="${em.name}"></td>
+<td th:text="${em.salary}"></td>
+<td th:text="${em.email}"></td>
+
+<td><a th:href="@{/update?(id=${em.id})}">Update</a></td>
+<td><a th:href="@{/delete?(id=${em.id})}">Delete</a></td>
+</tr>
+
+
+
+
+</table>
+
+
+
+</body>
+</html>
