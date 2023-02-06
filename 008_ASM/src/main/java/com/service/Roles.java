@@ -7,9 +7,9 @@ import com.model.Role;
 public interface Roles {
 	
 	void save(Role role);
-	void delete(Integer id);
+	void delete(Long id);
 	void update(Role role);
-	Role getByRoleID(Integer id);
+	Role getByRoleID(Long id);
 	List<Role> getAllRoles();
 
 }

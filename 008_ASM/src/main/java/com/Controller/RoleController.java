@@ -35,7 +35,7 @@ public class RoleController {
 	
 	
 	@GetMapping("/update")
-	public String updateRole(@RequestParam("id") Integer id,Model model) {
+	public String updateRole(@RequestParam("id") Long id,Model model) {
 		Role rol=serv.getByRoleID(id);
 		model.addAttribute("role", rol);
 		return "UpdateRole";
@@ -50,7 +50,7 @@ public class RoleController {
 	
 	
 	@GetMapping("/delete")
-	public String deleteRole(@RequestParam("id") Integer id) {
+	public String deleteRole(@RequestParam("id") Long id) {
 		serv.delete(id);
 		return "redirect:/getAllroles";
 		

@@ -6,9 +6,9 @@ import com.model.Asset;
 
 public interface AssetService {
 	void save(Asset asset);
-	void delete(Integer id);
+	void delete(Long id);
 	void update(Asset asset);
-	Asset getByAssetID(Integer id);
+	Asset getByAssetID(Long id);
 	List<Asset> getAllAssets();
 
 

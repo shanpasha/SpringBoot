@@ -8,8 +8,8 @@ public interface RoomService {
 	
 	void save (Room room);
 	void update (Room room);
-	Room getByidRoomId(Integer id);
+	Room getByidRoomId(Long id);
 	List<Room>getAllRooms();
-	void deleteByRoomId(Integer id);
+	void deleteByRoomId(Long id);
 
 }

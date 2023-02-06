@@ -26,13 +26,13 @@ public class UserInfoImpl implements UserService{
 	}
 
 	@Override
-	public UserInfo getById(Integer id) {
+	public UserInfo getById(Long id) {
 	
 		return repo.findById(id).get();
 	}
 
 	@Override
-	public void deleteUser(Integer id) {
+	public void deleteUser(Long id) {
 	repo.deleteById(id);
 		
 	}
@@ -40,6 +40,12 @@ public class UserInfoImpl implements UserService{
 	@Override
 	public void updateUser(UserInfo user) {
 	repo.save(user);
+		
+	}
+
+	@Override
+	public void deleteUserRole(Long id) {
+		repo.deleteUserRole(id);
 		
 	}
 

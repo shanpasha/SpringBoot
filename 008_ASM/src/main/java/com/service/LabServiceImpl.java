@@ -20,7 +20,7 @@ public class LabServiceImpl implements LabService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		repo.deleteById(id);
 	}
 
@@ -30,7 +30,7 @@ public class LabServiceImpl implements LabService {
 	}
 
 	@Override
-	public Lab getByLabID(Integer id) {
+	public Lab getByLabID(Long id) {
 		return repo.findById(id).get();
 	}
 

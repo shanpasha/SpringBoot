@@ -22,7 +22,7 @@ public class RoleServiceImpl implements Roles{
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		repo.deleteById(id);
 		
 	}
@@ -34,7 +34,7 @@ public class RoleServiceImpl implements Roles{
 	}
 
 	@Override
-	public Role getByRoleID(Integer id) {
+	public Role getByRoleID(Long id) {
 	return repo.findById(id).get();
 		
 	}

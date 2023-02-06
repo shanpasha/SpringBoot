@@ -7,9 +7,9 @@ import com.model.Lab;
 public interface LabService {
 	
 	void save(Lab asset);
-	void delete(Integer id);
+	void delete(Long id);
 	void update(Lab lab);
-	Lab getByLabID(Integer id);
+	Lab getByLabID(Long id);
 	List<Lab> getAllLabs();
 
 }

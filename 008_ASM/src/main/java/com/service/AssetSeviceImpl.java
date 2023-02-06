@@ -19,7 +19,7 @@ public class AssetSeviceImpl implements AssetService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		repo.deleteById(id);
 	}
 
@@ -29,7 +29,7 @@ public class AssetSeviceImpl implements AssetService {
 	}
 
 	@Override
-	public Asset getByAssetID(Integer id) {
+	public Asset getByAssetID(Long id) {
 		return repo.findById(id).get() ;
 		
 	}
