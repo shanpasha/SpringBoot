@@ -42,8 +42,11 @@ public class AssetRestController {
 
 	@PostMapping("/saveAsset")
 	public ResponseEntity<?> save(@RequestBody Asset asset) {
-		Room rm=asset.getRoom();
-		Room rm2=Rserv.getByidRoomId(rm.getRoomId());
+//		first way
+//		Room rm=asset.getRoom();
+//		Room rm2=Rserv.getByidRoomId(rm.getRoomId());
+		//second way
+		Room rm2= Rserv.getByidRoomId(asset.getRoom().getRoomId());		
 		asset.setRoom(rm2);
 		serv.save(asset);
 		return new ResponseEntity<>(HttpStatus.OK).ok(asset);

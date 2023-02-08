@@ -33,9 +33,13 @@ public class RoomRestController {
 
 	@PostMapping("/save")
 	public ResponseEntity<?> save(@RequestBody Room room) {
+		//one way
+//	Lab r=room.getLab();
+//	Lab l2=Lserv.getByLabID(r.getLabId());
 		
-	Lab r=room.getLab();
-	Lab l2=Lserv.getByLabID(r.getLabId());
+		//second way
+		Lab l2=Lserv.getByLabID(room.getLab().getLabId());
+		
 	room.setLab(l2);
 		roomServ.save(room);
 		return new ResponseEntity<>(HttpStatus.OK).ok(room);
