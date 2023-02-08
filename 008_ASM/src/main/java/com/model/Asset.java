@@ -27,6 +27,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Asset {
 	
 
@@ -46,9 +47,9 @@ public class Asset {
 	    private Double cost;
 	    private String primaryContact;
 	    private String secondryContact;
-	    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	    @ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
 	    @JoinColumn(name = "roomId")
-	    @JsonIgnoreProperties({"assets","lab"})
-	    private Room room;
+	     @JsonIgnoreProperties("assets")
+	   	    private Room room;
 
 }

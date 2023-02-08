@@ -18,13 +18,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Room {
 
 	
@@ -32,9 +31,12 @@ public class Room {
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Long roomId;
 		private String roomName;
-		@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+		@ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
 		@JoinColumn(name = "labId")
+		@JsonIgnoreProperties("rooms")
 		private Lab lab;
+		
 		@OneToMany(mappedBy = "room")
+		@JsonIgnoreProperties("room")
 		private List<Asset> assets;
 }

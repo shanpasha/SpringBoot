@@ -6,7 +6,7 @@ import com.model.Lab;
 
 public interface LabService {
 	
-	void save(Lab asset);
+	void save(Lab lab);
 	void delete(Long id);
 	void update(Lab lab);
 	Lab getByLabID(Long id);

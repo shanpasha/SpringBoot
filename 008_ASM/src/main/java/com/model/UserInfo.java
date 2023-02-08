@@ -13,6 +13,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.JoinColumn;
 
 
@@ -44,8 +48,7 @@ public class UserInfo {
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "user_role",joinColumns = { @JoinColumn(name ="userId") },
-	inverseJoinColumns = {@JoinColumn(name = "roleId") })
-	
+	inverseJoinColumns = {@JoinColumn(name = "roleId")})
 	@JsonIgnoreProperties("users")
 	private List<Role> roles;
 	

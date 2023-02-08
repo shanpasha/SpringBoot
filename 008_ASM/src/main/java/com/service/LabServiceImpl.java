@@ -14,8 +14,8 @@ public class LabServiceImpl implements LabService {
 	LabRepo repo;
 	
 	@Override
-	public void save(Lab asset) {
-		repo.save(asset);
+	public void save(Lab lab) {
+		repo.save(lab);
 		
 	}
 
