@@ -27,10 +27,16 @@ public class RoomRestController {
 	
 	@Autowired
 	RoomService roomServ;
+	
+	@Autowired
+	LabService Lserv;
 
 	@PostMapping("/save")
 	public ResponseEntity<?> save(@RequestBody Room room) {
-
+		
+	Lab r=room.getLab();
+	Lab l2=Lserv.getByLabID(r.getLabId());
+	room.setLab(l2);
 		roomServ.save(room);
 		return new ResponseEntity<>(HttpStatus.OK).ok(room);
 	}

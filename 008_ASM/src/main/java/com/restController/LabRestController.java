@@ -51,8 +51,21 @@ public class LabRestController {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 
-		labServ.delete(id);
-		return new ResponseEntity<>(HttpStatus.OK).ok("ID: " + id + " Deleted Succefully..!");
+		try {
+			Lab l = labServ.getByLabID(id);
+			if (l != null) {
+				labServ.delete(id);
+				return new ResponseEntity<>(HttpStatus.OK).ok("ID: " + id + " Deleted Succefully..!");
+
+			} else {
+				throw new Exception();
+
+			}
+
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.OK).ok("Record Not Found In This ID: " + id  );
+
+		}
 	}
 
 	@GetMapping("/getById/{id}")

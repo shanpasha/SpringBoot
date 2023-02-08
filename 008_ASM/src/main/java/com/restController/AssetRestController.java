@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.model.Asset;
+import com.model.Room;
 import com.service.AssetService;
+import com.service.RoomService;
 
 @RestController
 @RequestMapping("/Asset")
 public class AssetRestController {
 	@Autowired
 	AssetService serv;
+	@Autowired
+	RoomService Rserv;
 
 	@PostMapping("/update")
 	public ResponseEntity<?> Update(@RequestBody Asset asset) {
@@ -38,6 +42,9 @@ public class AssetRestController {
 
 	@PostMapping("/saveAsset")
 	public ResponseEntity<?> save(@RequestBody Asset asset) {
+		Room rm=asset.getRoom();
+		Room rm2=Rserv.getByidRoomId(rm.getRoomId());
+		asset.setRoom(rm2);
 		serv.save(asset);
 		return new ResponseEntity<>(HttpStatus.OK).ok(asset);
 	}
