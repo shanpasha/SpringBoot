@@ -1,5 +1,7 @@
 package com.restController;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +27,7 @@ public class AssetRestController {
 	RoomService Rserv;
 
 	@PostMapping("/update")
-	public ResponseEntity<?> Update(@RequestBody Asset asset) {
+	public ResponseEntity<?> Update(@Valid @RequestBody Asset asset) {
 		try {
 			Asset a = serv.getByAssetID(asset.getAssetId());
 
@@ -41,7 +43,7 @@ public class AssetRestController {
 	}
 
 	@PostMapping("/saveAsset")
-	public ResponseEntity<?> save(@RequestBody Asset asset) {
+	public ResponseEntity<?> save(@Valid @RequestBody Asset asset) {
 //		first way
 //		Room rm=asset.getRoom();
 //		Room rm2=Rserv.getByidRoomId(rm.getRoomId());

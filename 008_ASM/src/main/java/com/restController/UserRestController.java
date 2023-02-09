@@ -33,7 +33,7 @@ public class UserRestController {
 		for (Role role : user.getRoles()) {
 			roles.add(rserv.getByRoleID(role.getRoleId()));
 
-			System.out.println(roles.add(rserv.getByRoleID(role.getRoleId())));
+			
 		}
 		user.setRoles(roles);
 		serv.addUser(user);

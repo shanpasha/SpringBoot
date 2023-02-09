@@ -2,6 +2,8 @@ package com.restController;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,14 +26,14 @@ public class RoleRestController {
 	Roles roleServ;
 
 	@PostMapping("/save")
-	public ResponseEntity<?> saveRole(@RequestBody Role role) {
+	public ResponseEntity<?> saveRole(@Valid @RequestBody  Role role) {
 
 		roleServ.save(role);
 		return new ResponseEntity<>(HttpStatus.OK).ok(role);
 	}
 
 	@PutMapping("/update")
-	public ResponseEntity<?> UpdateRole(@RequestBody Role role) {
+	public ResponseEntity<?> UpdateRole( @Valid @RequestBody Role role) {
 
 		try {
 			Role r=roleServ.getByRoleID(role.getRoleId());

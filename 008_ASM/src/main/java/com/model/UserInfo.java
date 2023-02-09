@@ -12,14 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
+import javax.validation.constraints.NotEmpty;
 import javax.persistence.JoinColumn;
-
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -36,13 +30,19 @@ public class UserInfo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userId;
 	@Column(unique = true)
+	@NotEmpty(message = "Username Required..")
 	private String userName;
+	
 	private String password;
+	@NotEmpty(message = "Username Required..")
 	private String firstName;
+	@NotEmpty(message = "Last name Required" )
 	private String lastName;
 	@Column(unique = true)
 	private String email;
+	@NotEmpty(message = "mobile Required..." )
 	private String mobile;
+	@NotEmpty(message = "Department")
 	private String department;
 	private Boolean isActive;
 	
@@ -52,8 +52,5 @@ public class UserInfo {
 	@JsonIgnoreProperties("users")
 	private List<Role> roles;
 	
-
 	
-
-
 }

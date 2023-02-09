@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -29,10 +30,12 @@ public class Role {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Long roleId;
+		@NotEmpty(message = "Role name required...! ")
 		private String roleName;
-      
+		
 		@ManyToMany(mappedBy = "roles")
 	@JsonIgnoreProperties("roles")
+		@ToString.Exclude
 	private List<UserInfo> users;
 
 	
