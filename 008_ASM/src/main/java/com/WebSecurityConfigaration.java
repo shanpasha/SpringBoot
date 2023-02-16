@@ -2,13 +2,14 @@ package com;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import com.Authentiction.AsmUserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
@@ -16,22 +17,31 @@ public class WebSecurityConfigaration {
 	
 	
 	@Bean
+	public BCryptPasswordEncoder PasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	
+	@Bean
 	public SecurityFilterChain securitychain(HttpSecurity http) throws Exception {
-		http.authorizeRequests((requests)->requests
-				.antMatchers("/","/home").permitAll()
-				.anyRequest().authenticated()).formLogin();
+		http.csrf().disable();
+		http.authorizeRequests()
+				.antMatchers("/register","/regi","/home").permitAll()
+				.antMatchers("/getAllUsers","/getAllroles").hasAuthority("User")
+				.anyRequest().authenticated().and().formLogin().loginPage("/login")
+				.permitAll().defaultSuccessUrl("/home", true).and().logout().permitAll();
 		return http.build();
 }		
 	
+
 	
-@Bean
-	UserDetailsService userDetailsService() {
+
+	@Bean
+	public AuthenticationManager authenticationManager(HttpSecurity http,AsmUserDetailsServiceImpl userDeatils,BCryptPasswordEncoder encode) throws Exception {
 		
-		UserDetails user=User.withDefaultPasswordEncoder()
-				.username("shan")
-				.password("shan").roles("user").build();
-		return new InMemoryUserDetailsManager(user);
 		
+		return http.getSharedObject(AuthenticationManagerBuilder.class)
+				.userDetailsService(userDeatils).passwordEncoder(encode).and().build();
 		
 	}
 

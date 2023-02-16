@@ -14,7 +14,8 @@ public interface UserService {
 	public void  deleteUser(Long id);
 	public void updateUser(UserInfo user);	
 	public void deleteUserRole(Long id);
-
+	public UserInfo findByUserName(String userName);
+	public void registration(UserInfo user);
 	
 
 }

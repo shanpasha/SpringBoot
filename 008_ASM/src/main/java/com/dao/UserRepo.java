@@ -9,5 +9,8 @@ public interface UserRepo extends JpaRepository<UserInfo, Long> {
 
 	@Query(nativeQuery = true,value="delete from user_role where user_id=?1")
 	public void deleteUserRole(Long id);
+	
+	public UserInfo findByUserName(String userName);
+	
 
 }

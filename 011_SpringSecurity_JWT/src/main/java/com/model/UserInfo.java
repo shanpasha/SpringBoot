@@ -13,6 +13,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.JoinColumn;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -46,7 +50,7 @@ public class UserInfo {
 	private String department;
 	private Boolean isActive;
 	
-	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinTable(name = "user_role",joinColumns = { @JoinColumn(name ="userId") },
 	inverseJoinColumns = {@JoinColumn(name = "roleId")})
 	@JsonIgnoreProperties("users")
