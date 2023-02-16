@@ -38,7 +38,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 		String jwtToken = null;
 		// JWT Token is in the form "shan token". Remove shan word and get
 		// only the Token
-		if (requestTokenHeader != null && requestTokenHeader.startsWith("shan ")) {
+		if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
 			jwtToken = requestTokenHeader.substring(7);
 			try {
 				username = jwtTokenUtil.getUsernameFromToken(jwtToken);
@@ -54,7 +54,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 		// Once we get the token validate it.
 		if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-			UserDetails userDetails = this.jwtUserDetailsService.loadUserByUsername(username);
+			UserDetails userDetails = this.jwtUserDetailsService .loadUserByUsername(username);
 
 			// if token is valid configure Spring Security to manually set
 			// authentication
