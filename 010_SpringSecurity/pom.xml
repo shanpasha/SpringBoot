@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com</groupId>
-	<artifactId>007_Thymeleaf</artifactId>
+	<artifactId>010_SpringSecurity</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>010_SpringSecurity</name>
 	<description>Demo project for Spring Boot</description>

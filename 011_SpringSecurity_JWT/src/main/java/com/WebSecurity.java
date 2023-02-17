@@ -55,8 +55,8 @@ public class WebSecurity {
                                    "/configuration/security",
                                    "/swagger-ui/**",
                                    "/webjars/**").permitAll()
-		.antMatchers("/user").hasAuthority("User").
-		antMatchers("/admin").hasAuthority("Admin")
+		.antMatchers("/user","/saveUser").hasAuthority("User").
+		antMatchers("/admin","/saveUser").hasAuthority("Admin")
 		.antMatchers("/common").hasAnyAuthority("Admin","User")
 		.anyRequest().authenticated().and().formLogin()
 		.defaultSuccessUrl("/welcome",true).
