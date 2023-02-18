@@ -11,7 +11,7 @@
 	<groupId>com</groupId>
 	<artifactId>012_SpringSecurity_JWT</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>011_SpringSecurityWithDatabase</name>
+	<name>012_SpringSecurity_JWT</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
