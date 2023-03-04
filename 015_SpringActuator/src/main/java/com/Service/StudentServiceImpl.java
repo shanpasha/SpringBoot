@@ -52,10 +52,10 @@ public class StudentServiceImpl  implements StudentService{
 	
 	public void intitSave() {
 		
-		stu.save(new Student(3, "ravi", 150000) );
-		stu.save(new Student(4, "sriman", 78000) );
-		stu.save(new Student(5, "shan", 35000) );
-		stu.save(new Student(1, "ramya", 350000) );
+//		stu.save(new Student(3, "ravi", 150000) );
+//		stu.save(new Student(4, "sriman", 78000) );
+//		stu.save(new Student(5, "shan", 35000) );
+//		stu.save(new Student(1, "ramya", 350000) );
 	}
 
 	@Override

@@ -16,7 +16,6 @@ public class AsmUserDetails implements UserDetails {
 	
 	UserInfo user;
 	
-
 	public AsmUserDetails(UserInfo user) {
 		super();
 		this.user = user;
@@ -63,6 +62,6 @@ public class AsmUserDetails implements UserDetails {
 		return true;
 	}
 
-	
+
 
 }

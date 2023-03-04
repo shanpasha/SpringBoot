@@ -51,6 +51,8 @@ public class UserInfo {
 	inverseJoinColumns = {@JoinColumn(name = "roleId")})
 	@JsonIgnoreProperties("users")
 	private List<Role> roles;
+
+	
 	
 	
 }

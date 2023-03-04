@@ -9,15 +9,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
-import javax.persistence.JoinColumn;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -55,6 +52,10 @@ public class UserInfo {
 	inverseJoinColumns = {@JoinColumn(name = "roleId")})
 	@JsonIgnoreProperties("users")
 	private List<Role> roles;
-	
+	public static void main(String[] args) {
+		
+		UserInfo f=new UserInfo();
+		f.setUserName("");
+	}
 	
 }

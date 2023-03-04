@@ -17,8 +17,10 @@ public class EmpController {
 	
 	@Autowired
     EmployeeRepo repo;
+	Employee e=new Employee();
 	
 
+	
 	@GetMapping("/saveEmp")
 	public String addEmp(Model m){
 		m.addAttribute("emps",new Employee());

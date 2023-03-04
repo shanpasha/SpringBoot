@@ -28,7 +28,7 @@ public class WebSecurityConfigaration {
 		http.authorizeRequests()
 				.antMatchers("/register","/regi","/home").permitAll()
 				.antMatchers("/getAllUsers","/getAllroles").hasAuthority("User")
-				.anyRequest().authenticated().and().formLogin().loginPage("/login")
+				.anyRequest().authenticated().and().formLogin()
 				.permitAll().defaultSuccessUrl("/home", true).and().logout().permitAll();
 		return http.build();
 }		
